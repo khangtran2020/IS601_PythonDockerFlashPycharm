@@ -5,6 +5,7 @@ from flask import Flask, Response
 
 app = Flask(__name__)
 
+
 def cities_import() -> List[Dict]:
     config = {
         'user': 'root',
@@ -21,7 +22,9 @@ def cities_import() -> List[Dict]:
 
     cursor.close()
     connection.close()
+
     return result
+
 
 @app.route('/')
 def index() -> str:
@@ -29,6 +32,6 @@ def index() -> str:
     resp = Response(js, status=200, mimetype='application/json')
     return resp
 
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
-
